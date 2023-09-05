@@ -12,6 +12,11 @@
 
 int main()
 {
-    printf("Holi Canoli");
+    putc(65, stdout);
+    putchar(64);
+    puts("Holi Canoli");
+    printf("Hola a todes");
+    putc(10, stdout);
+    printf("Hola a todes");
     return 0;
 }
