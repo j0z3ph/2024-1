@@ -1,0 +1,34 @@
+sin(z)
+
+ans =
+
+    0.7344
+
+cos(x)
+
+ans =
+
+    0.2837
+
+pi
+
+ans =
+
+    3.1416
+
+clc
+clear ans
+x * y
+
+ans =
+
+    30
+
+diary off
+%esto es un comnetario
+sin()=5
+ sin()=5
+    ↑
+{Error: An indexing expression on the left side of an assignment must have at least one subscript.
+} 
+diary off
