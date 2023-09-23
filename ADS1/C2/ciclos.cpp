@@ -15,8 +15,8 @@ using namespace std;
 int main()
 {
     int numero = 1;
-    
-    for (;numero <= 10;)
+
+    for (; numero <= 10;)
     {
         cout << numero << endl;
         numero += 1;
