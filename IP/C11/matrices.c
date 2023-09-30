@@ -64,7 +64,9 @@ int determinante(int A[][3])
     return det;
 }
 
-int suma(int valor1, int valor2, int valor3)
+int suma(int valor1,
+         int valor2,
+         int valor3)
 {
     int resultado = valor1 + valor2 + valor3;
     return resultado;
