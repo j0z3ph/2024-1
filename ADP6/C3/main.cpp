@@ -13,10 +13,21 @@
 
 using namespace std;
 
+
+void pause() {
+    string basura;
+    cout << "Presione enter para continuar...";
+    getline(cin, basura);
+}
+
 int main(int argc, char const *argv[])
 {
+    string nombre;
+    getline(cin, nombre);
+    cout << nombre;
     int a = 6, b = 7, c;
     multiplicacion(&a, &b, &c);
     cout << c << endl;
+    pause();
     return 0;
 }

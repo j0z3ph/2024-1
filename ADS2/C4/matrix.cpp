@@ -9,6 +9,8 @@
  *
  */
 #include <iostream>
+#define ERROR -1
+#define OK 0
 
 using namespace std;
 
@@ -35,29 +37,44 @@ int determinante(int m[3][3]);
 /**
  * @brief Calcula la traspuesta de una matriz
  * de 3x3
- * 
+ *
  * @param m La matriz original.
  * @param t La matriz traspuesta.
  */
 void traspuesta(int m[3][3], int t[3][3]);
 
 /**
+ * @brief Calcula la adjunta de una matriz de 3x3
+ *
+ * @param m Matrix
+ * @param a Adjunta
+ */
+void adjunta(int m[3][3], int a[3][3]);
+
+int inversa(int m[3][3], double I[3][3]);
+
+/**
  * @brief Imprime una matriz de 3x3
- * 
+ *
  * @param m La matriz.
  */
 void imprime(int m[3][3]);
 
+void imprime(double m[3][3]);
+
 int main()
 {
-    int m[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-    int t[3][3];
+    int m[3][3] = {{1, 2, 3}, {4, 1, 6}, {7, 8, 9}};
+    double t[3][3];
 
-    traspuesta(m,t);
+    if (inversa(m, t) == ERROR)
+        cout << "Upss, no tiene inversa" << endl;
+    else
+    {
+        imprime(m);
 
-    imprime(m);
-    imprime(t);
-
+        imprime(t);
+    }
     return 0;
 }
 
@@ -89,7 +106,8 @@ void traspuesta(int m[3][3], int t[3][3])
             t[fila][columna] = m[columna][fila];
 }
 
-void imprime(int m[3][3]) {
+void imprime(int m[3][3])
+{
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
@@ -98,4 +116,58 @@ void imprime(int m[3][3]) {
         }
         cout << endl;
     }
+}
+
+void imprime(double m[3][3])
+{
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            cout << m[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+void adjunta(int m[3][3], int a[3][3])
+{
+    a[0][0] = +1 * (m[1][1] * m[2][2] - m[2][1] * m[1][2]);
+    a[0][1] = -1 * (m[1][0] * m[2][2] - m[2][0] * m[1][2]);
+    a[0][2] = +1 * (m[1][0] * m[2][1] - m[2][0] * m[1][1]);
+    a[1][0] = -1 * (m[0][1] * m[2][2] - m[2][1] * m[0][2]);
+    a[1][1] = +1 * (m[0][0] * m[2][2] - m[2][0] * m[0][2]);
+    a[1][2] = -1 * (m[0][0] * m[2][1] - m[2][0] * m[0][1]);
+    a[2][0] = +1 * (m[0][1] * m[1][2] - m[1][1] * m[0][2]);
+    a[2][1] = -1 * (m[0][0] * m[1][2] - m[1][0] * m[0][2]);
+    a[2][2] = +1 * (m[0][0] * m[1][1] - m[1][0] * m[0][1]);
+}
+
+int inversa(int m[3][3], double I[3][3])
+{
+    int det = determinante(m);
+    int t[3][3];
+    int a[3][3];
+    double factor = 1.0;
+    if (det == 0)
+    {
+        return ERROR;
+    }
+
+    factor /= (double)det;
+
+    // Calculamos la traspuesta
+    traspuesta(m, t);
+
+    // Calculamos la adjunta
+    adjunta(t, a);
+
+    for (int fila = 0; fila < 3; fila++)
+    {
+        for (int col = 0; col < 3; col++)
+        {
+            I[fila][col] = (double)a[fila][col] * factor;
+        }
+    }
+    return OK;
 }
