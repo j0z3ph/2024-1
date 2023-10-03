@@ -9,6 +9,8 @@
  *
  */
 #include <stdio.h>
+#define ERROR -1
+#define OK 0
 
 // Aqui van las declaraciones (firmas)
 
@@ -25,27 +27,24 @@ void transpuesta(int A[][3], int T[][3]);
 
 void imprime(int A[][3]);
 
+void imprimeDouble(double A[][3]);
+
 int suma(int valor1, int valor2, int valor3);
+
+void adjunta(int A[][3], int Adj[][3]);
+
+int inversa(int A[][3], double I[][3]);
 
 int main()
 {
-    /*
-     int a = 5, b = 11;
-    printf("%i\n", suma(a,b,6));
+    int A[3][3] = {{1, 2, 7}, {4, 5, 6}, {7, 8, 9}};
+    double I[3][3];
 
-    return 0;
- */
-
-    int A[3][3] = {{1, 2, 8}, {4, 5, 6}, {7, 8, 9}};
-    int T[3][3];
-
-    imprime(A);
-    transpuesta(A, T);
-    // int det = determinante(A);
-
-    // printf("%i\n", det);
-
-    imprime(T);
+    if(inversa(A,I) == ERROR) {
+        printf("La matriz no tiene inversa :'(\n");
+    } else {
+        imprimeDouble(I);
+    }
 
     return 0;
 }
@@ -95,4 +94,60 @@ void imprime(int A[][3])
         }
         printf("]\n");
     }
+}
+
+void imprimeDouble(double A[][3])
+{
+    printf("\n");
+    for (int i = 0; i < 3; i++)
+    {
+        printf("[ ");
+        for (int j = 0; j < 3; j++)
+        {
+            printf("%5.2lf ", A[i][j]);
+        }
+        printf("]\n");
+    }
+}
+
+void adjunta(int A[][3], int Adj[][3])
+{
+    Adj[0][0] = +1 * (A[1][1] * A[2][2] - A[2][1] * A[1][2]);
+    Adj[0][1] = -1 * (A[1][0] * A[2][2] - A[2][0] * A[1][2]);
+    Adj[0][2] = +1 * (A[1][0] * A[2][1] - A[2][0] * A[1][1]);
+    Adj[1][0] = -1 * (A[0][1] * A[2][2] - A[2][1] * A[0][2]);
+    Adj[1][1] = +1 * (A[0][0] * A[2][2] - A[2][0] * A[0][2]);
+    Adj[1][2] = -1 * (A[0][0] * A[2][1] - A[0][1] * A[2][0]);
+    Adj[2][0] = +1 * (A[0][1] * A[1][2] - A[1][1] * A[0][2]);
+    Adj[2][1] = -1 * (A[0][0] * A[1][2] - A[1][0] * A[0][2]);
+    Adj[2][2] = +1 * (A[0][0] * A[1][1] - A[1][0] * A[0][1]);
+}
+
+int inversa(int A[][3], double I[][3])
+{
+    int det = determinante(A);
+    double factor = 1.0;
+    int t[3][3];
+    int a[3][3];
+
+    if (det == 0)
+        return ERROR;
+
+    factor /= (double)det;
+
+    // Calculamos la traspuesta
+    transpuesta(A, t);
+
+    // Adjunta de la traspuesta
+    adjunta(t, a);
+
+    //
+    for (int f = 0; f < 3; f++)
+    {
+        for (int c = 0; c < 3; c++)
+        {
+            I[f][c] = factor * (double)a[f][c];
+        }
+    }
+    return OK;
 }
