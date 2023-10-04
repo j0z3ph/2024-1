@@ -72,7 +72,7 @@ int main()
     else
     {
         imprime(m);
-
+        
         imprime(t);
     }
     return 0;
