@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Clikme</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -38,18 +38,15 @@
     </property>
     <property name="font">
      <font>
-      <family>Georgia</family>
-      <pointsize>10</pointsize>
-      <bold>false</bold>
-      <underline>false</underline>
-      <kerning>true</kerning>
+      <family>Arial</family>
+      <pointsize>36</pointsize>
      </font>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
-     <string>Holiwiss</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff1d00;&quot;&gt;Holiwiss&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
