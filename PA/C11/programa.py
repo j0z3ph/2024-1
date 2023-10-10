@@ -15,7 +15,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if self.lbl_res.text() == "0":
             self.lbl_res.setText("1")
         else:
-            self.updateRes()"1")
+            self.updateRes("1")
     
     def updateRes(self, texto):
         self.lbl_res.setText(f"<html><head/><body><p align=\"right\"><span style=\" font-size:36pt;\">{texto}</span></p></body></html>")
