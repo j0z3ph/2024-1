@@ -109,4 +109,4 @@ class Ui_MainWindow(object):
         self.pushButton_18.setText(_translate("MainWindow", "."))
         self.pushButton_19.setText(_translate("MainWindow", "="))
         self.pushButton_17.setText(_translate("MainWindow", "0"))
-        self.lbl_res.setText(_translate("MainWindow", "0"))
+        self.lbl_res.setText(_translate("MainWindow", "<html><head/><body><p align=\"right\">0</p></body></html>"))
