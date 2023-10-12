@@ -4,43 +4,108 @@
  * @brief Ejemplos
  * @version 0.1
  * @date 2023-10-10
- * 
+ *
  * @copyright Copyright (c) 2023
- * 
+ *
  */
-#include<iostream>
+#include <iostream>
+#include <string>
 
 using namespace std;
 
 typedef int entero;
 
-struct Fecha {
+class Fecha
+{
+private:
     int dia;
     int mes;
     int anio;
+
+public:
+    void setFecha(int dia, int mes, int anio)
+    {
+        this->dia = dia;
+        this->mes = mes;
+        this->anio = anio;
+    }
+
+    string getFecha()
+    {
+        return to_string(dia) + "/" + to_string(mes) + "/" + to_string(anio);
+    }
 };
 
-struct Contacto {
+class Contacto
+{
+private:
     string nombre;
     string numero;
-    struct Fecha fecha_registro;
-};
+    Fecha fecha_registro;
+    int variable;
 
-typedef struct Contacto Contacto;
+public:
+    Contacto() {
+        variable = 10;
+    }
+     void setVar(int v) {
+        variable = v;
+     }
+
+     int getVar() {
+        return variable;
+     }
+
+    void setFecha(int dia, int mes, int anio)
+    {
+        fecha_registro.setFecha(dia, mes, anio);
+    }
+
+    string getFecha()
+    {
+        return fecha_registro.getFecha();
+    }
+
+    void setNombre(string nombre)
+    {
+        this->nombre = nombre;
+    }
+    string getNombre()
+    {
+        return this->nombre;
+    }
+
+    void setNumero(string number)
+    {
+        nombre = number;
+    }
+
+    string getNumero()
+    {
+        return numero;
+    }
+
+    void llamar()
+    {
+        /*int variable;
+        {
+            int maslocal;
+            variable = 8;
+        }
+        maslocal = 1;*/
+        cout << "Llamando a " << nombre << "...";
+    }
+};
 
 int main()
 {
-    entero dato;
-    Contacto listaContactos[100];
-    Contacto contacto1;
-    contacto1.nombre = "Jose Luis";
-    contacto1.numero = "34263848";
-    contacto1.fecha_registro.dia = 10;
-    contacto1.fecha_registro.mes = 10;
-    contacto1.fecha_registro.anio = 2023;
+    Contacto contacto;
 
+    contacto.setNombre("Josue Jareth");
+    contacto.setNumero("1254364");
+    contacto.setFecha(6, 6, 666);
 
+    cout << contacto.getVar();
 
-    
     return 0;
 }
