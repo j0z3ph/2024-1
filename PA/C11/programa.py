@@ -13,6 +13,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         self.__internal_str = "0"
         
+        # AC
+        self.pushButton.clicked.connect(self.clear)
+        
         # Numeros
         self.pushButton_13.clicked.connect(self.numberPressed)
         self.pushButton_4.clicked.connect(self.numberPressed)
@@ -27,6 +30,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         # Punto
         self.pushButton_18.clicked.connect(self.decimal_point)
+        
+    def clear(self):
+        self.__internal_str = "0"
+        self.setRichText("0")
         
     def keyPressEvent(self, event: QKeyEvent) -> None:
         super().keyPressEvent(event)
