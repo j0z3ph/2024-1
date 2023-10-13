@@ -4,45 +4,99 @@
  * @brief Ejemplo
  * @version 0.1
  * @date 2023-10-11
- * 
+ *
  * @copyright Copyright (c) 2023
- * 
+ *
  */
-#include<iostream>
+#include <iostream>
+#include <string>
 
 using namespace std;
 
-typedef int entero;
-
-class Fecha {
-    public:
+class Fecha
+{
+private:
     int dia;
     int mes;
     int anio;
+
+public:
+    void setFecha(int dia, int mes, int anio)
+    {
+        this->dia = dia;
+        this->mes = mes;
+        this->anio = anio;
+    }
+
+    string getFecha()
+    {
+        return to_string(dia) + "/" + to_string(mes) + "/" + to_string(anio);
+    }
 };
 
-class Contacto {
-    public:
+class Contacto
+{
+private:
     string nombre;
     string numero;
-    struct Fecha fregistro;
-    void llamar() {
+    Fecha fregistro;
+    int var;
+
+public:
+    Contacto(string nombre, string numero, int dia, int mes, int anio)
+    {
+        this->nombre = nombre;
+        this->numero = numero;
+        this->fregistro.setFecha(dia, mes, anio);
+    }
+
+    ~Contacto()
+    {
+        cout << "Ya me mori" << endl;
+    }
+
+    int getVar()
+    {
+        return var;
+    }
+
+    string getFechaRegistro()
+    {
+        return fregistro.getFecha();
+    }
+
+    string getNombre()
+    {
+        return this->nombre;
+    }
+
+    string getNumero()
+    {
+        return numero;
+    }
+
+    void llamar()
+    {
+        /*int var;
+        {
+            int var2;
+            var =10;
+        }
+        var2 = 8;*/
         cout << nombre << " llamando...";
     }
 };
 
-
-
 int main()
 {
-    entero n = 10;
-    Contacto cont1;
-    cont1.nombre = "Mateo";
-    cont1.numero = "1234567";
-    cont1.fregistro.dia = 11;
-    cont1.fregistro.mes = 10;
-    cont1.fregistro.anio = 2023;
-    cont1.llamar();
-    
+
+    Contacto cont1("Jose Luis", "2156261", 6, 6, 666);
+
+    // cont1.setNombre("Mateo");
+    // cont1.setNumero("765763");
+    // cont1.setFechaRegistro(6, 6, 666);
+
+    cout << cont1.getFechaRegistro();
+
     return 0;
 }
