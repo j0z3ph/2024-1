@@ -22,10 +22,10 @@ protected:
 public:
     Figura(double base, double altura) : base(base), altura(altura) {}
     double getBase() { return base; }
-    void setBase(double base) { this->base = base; }
+    //void setBase(double base) { this->base = base; }
 
     double getAltura() { return altura; }
-    void setAltura(double altura) { this->altura = altura; }
+    //void setAltura(double altura) { this->altura = altura; }
     // Funciones virtuales puras
     virtual double area() = 0;
     virtual double perimetro() = 0;
@@ -34,14 +34,23 @@ public:
 class Cuadrado : public Figura
 {
 public:
-    Cuadrado(double base, double altura) : Figura(base, altura) {}
+    /**
+     * @brief Crea un objeto de tipo rectangulo.
+     * Si recibe un valor negativo o cero crea un cuadrado
+     *  de 1 x 1.
+     * @param lado 
+     */
+    Cuadrado(double lado) : Figura(lado, lado) {
+        this->base = lado <= 0 ? 1 : lado;
+        this->altura = lado <= 0 ? 1 : lado;
+    }
     // Polimorfismo : Sobreescritura (Override)
     double area() { return base * altura; }
     // Polimorfismo : Sobrecarga (Overload)
-    double area(double b, double a)
-    {
-        return b * a;
-    }
+    // double area(double b, double a)
+    //{
+    //    return b * a;
+    //}
 
     // Polimorfismo : Sobreescritura (Override)
     double perimetro() { return 2 * base + 2 * altura; }
@@ -58,13 +67,13 @@ public:
 
 int main()
 {
-
-    Cuadrado cuadrado(5.6, 7.1);
+    Cuadrado cuadrado(-17.0);
     Triangulo triangulo(5.6, 3.4);
 
-    cout << cuadrado.Figura::area();
-    cout << triangulo.Figura::area();
-    cout << triangulo.area();
+    cout << cuadrado.area();
+    cout << cuadrado.getBase();
+    //cout << triangulo.area();
+    //cout << triangulo.area();
 
     return 0;
 }
