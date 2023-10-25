@@ -11,10 +11,14 @@ line(x,fp,"LineWidth", 5);
 line(x,fbp, "Color", "g");
 
 title("\fontsize{30}\fontname{Comic Sans MS}MUCHAS GRAFICAS");
-xlabel("\fontsize{20}Eje X");
+xlabel("Eje X", Rotation=90, FontSize=20, Color="r", BackgroundColor="g", EdgeColor="k");
 ylabel("\fontsize{20}Eje Y");
 text(0.24,4.36, "HOLO");
 %gtext("JUAN");
 legend("\fontsize{20}\bf f(x)=3x^3 - 26x + 10 + sin(\pi)", ...
     "\fontsize{20}\bf f'(x)=9x^2 - 26", "\fontsize{20}\bf f''(x)=18x", ...
     "Location","bestoutside");
+%axis([-10,10,-120,120]);
+axis tight;
+grid on;
+grid off;
