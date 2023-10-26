@@ -24,15 +24,9 @@ public:
     // void Base(double base) { this->base = base; }
     // void Altura(double altura) { this->altura = altura; }
 
-    double Area()
-    {
-        return 0.0;
-    }
+    virtual double Area() = 0;
 
-    double Perimetro()
-    {
-        return 0.0;
-    }
+    virtual double Perimetro() = 0;
 };
 
 class Rectangulo : public Figura
@@ -86,13 +80,25 @@ public:
 
 class Triangulo : public Figura
 {
+public:
+    double Area()
+    {
+        return base * altura;
+    }
+    double Perimetro()
+    {
+        return 2 * base + 2 * altura;
+    }
 };
 
 int main(int argc, char const *argv[])
 {
+
     try
     {
-        Rectangulo r(5.6, 7.7);
+        Triangulo r;
+
+        cout << r.Area() << endl;
 
         Cuadrado c(34.7);
 
