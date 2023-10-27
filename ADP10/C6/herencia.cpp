@@ -24,15 +24,9 @@ public:
     void Base(double base) { this->base = base; }
     void Altura(double altura) { this->altura = altura; }
 
-    double Area()
-    {
-        return 0.0;
-    }
+    virtual double Area() = 0;
 
-    double Perimetro()
-    {
-        return 0.0;
-    }
+    virtual double Perimetro() = 0;
 };
 
 class Rectangulo : public Figura
@@ -51,6 +45,16 @@ public:
 
 class Cuadrado : public Figura
 {
+    public:
+    // Polimorfismo - Sobreescritura (Overwrite)
+    double Area()
+    {
+        return base * altura;
+    }
+    double Perimetro()
+    {
+        return 2 * base + 2 * altura;
+    }
 };
 
 class Triangulo
@@ -59,12 +63,10 @@ class Triangulo
 
 int main()
 {
-    Rectangulo rectangulo;
-    rectangulo.Base(6.7);
-    rectangulo.Altura(3.3);
+    Cuadrado c;
 
-    cout << rectangulo.Base() << "," << rectangulo.Altura() << endl;
-    cout << rectangulo.Figura::Area() << endl;
-    cout << rectangulo.Area();
+    cout << c.Area() << endl;
+
+
     return 0;
 }
