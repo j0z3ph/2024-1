@@ -1,0 +1,4 @@
+gcc -c -o funciones.o funciones.c
+ar cq libfunciones.a funciones.o
+gcc -o main main.c libfunciones.a 
+gcc -o main main.c -L. -lfunciones 
