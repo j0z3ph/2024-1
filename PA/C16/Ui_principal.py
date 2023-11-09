@@ -56,4 +56,6 @@ class Ui_Messenger(object):
         self.btnSend.setText(_translate("Messenger", "Enviar"))
         self.menuArchivo.setTitle(_translate("Messenger", "&Archivo"))
         self.actionConectar.setText(_translate("Messenger", "Co&nectar"))
+        self.actionConectar.setShortcut(_translate("Messenger", "Ctrl+C"))
         self.actionSalir.setText(_translate("Messenger", "&Salir"))
+        self.actionSalir.setShortcut(_translate("Messenger", "Ctrl+X"))

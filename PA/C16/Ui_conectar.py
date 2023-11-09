@@ -12,7 +12,16 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(391, 182)
+        Dialog.setWindowModality(QtCore.Qt.WindowModality.WindowModal)
+        Dialog.resize(391, 164)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(Dialog.sizePolicy().hasHeightForWidth())
+        Dialog.setSizePolicy(sizePolicy)
+        Dialog.setMinimumSize(QtCore.QSize(391, 164))
+        Dialog.setMaximumSize(QtCore.QSize(391, 164))
+        Dialog.setModal(True)
         self.gridLayout = QtWidgets.QGridLayout(Dialog)
         self.gridLayout.setObjectName("gridLayout")
         self.txtUser = QtWidgets.QLineEdit(parent=Dialog)
@@ -50,6 +59,9 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Conectar"))
+        self.txtUser.setPlaceholderText(_translate("Dialog", "anonimo"))
         self.label_3.setText(_translate("Dialog", "Usuario"))
         self.label_2.setText(_translate("Dialog", "Puerto"))
         self.label.setText(_translate("Dialog", "Servidor"))
+        self.txtServer.setPlaceholderText(_translate("Dialog", "127.0.0.1"))
+        self.txtPort.setPlaceholderText(_translate("Dialog", "65535"))

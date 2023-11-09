@@ -47,6 +47,7 @@ class MainWindow(QMainWindow, Ui_Messenger):
         self.actionSalir.triggered.connect(self.salir)
         self.coneccion = None
         self.btnSend.clicked.connect(self.mensaje_saliente)
+        self.setWindowTitle("Messenger - Desconectado")
         
     def mensaje_saliente(self):
         str = self.txtSend.text()
@@ -64,9 +65,11 @@ class MainWindow(QMainWindow, Ui_Messenger):
             server = dialog.txtServer.text()
             user = dialog.txtUser.text()
             port = dialog.txtPort.text()
-            self.coneccion = ThreadSocket(server, int(port))
-            self.coneccion.signal_message.connect(self.mensage_entrante)
-            self.coneccion.start()
+            if server and not server.isspace() and port and port.isnumeric():
+                self.coneccion = ThreadSocket(server, int(port))
+                self.coneccion.signal_message.connect(self.mensage_entrante)
+                self.coneccion.start()
+                self.setWindowTitle("Messenger - Conectado")
             
     def mensage_entrante(self, mensaje):
         self.txtMsgs.setPlainText(self.txtMsgs.toPlainText() + mensaje)
