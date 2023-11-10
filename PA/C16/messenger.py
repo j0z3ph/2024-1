@@ -54,6 +54,8 @@ class MainWindow(QMainWindow, Ui_Messenger):
         if str != "" and connected:
             server.send(bytes(str, 'utf-8'))
             self.txtSend.clear()
+            self.mensage_entrante("<Tú> " + str + '\n')
+            
         
     def salir(self):
         exit()
