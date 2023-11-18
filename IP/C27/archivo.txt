@@ -1,0 +1,12 @@
+Contacto 1
+Nombre: Jose Luis
+Numero: 1234567
+---------------------------------
+Contacto 2
+Nombre: Guillermo
+Numero: 9474838
+---------------------------------
+Contacto 3
+Nombre: Uriel
+Numero: 76873644
+---------------------------------
