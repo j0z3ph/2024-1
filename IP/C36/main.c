@@ -14,7 +14,7 @@
 
 int main()
 {
-    int x=5, y=5;
+    int x=5, y=5, xo=5, yo=5;
     char c='\0';
     char *portName = "COM3";
 	char command[MAX_DATA_LENGTH];
@@ -32,7 +32,8 @@ int main()
 	}
 
     while(1) {
-        clear();
+        //clear();
+
         gotoXY(x,y);
         //printf("%c", c);
         readSerialPort(response, MAX_DATA_LENGTH, &arduino);
@@ -44,7 +45,7 @@ int main()
                 x++;
             }
         }
-        Sleep(10);
+        Sleep(1);
         /*
         c = wait4Key();
         if(c == LEFT) {
